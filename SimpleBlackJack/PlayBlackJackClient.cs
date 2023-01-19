@@ -2,6 +2,7 @@
 using SimpleBlackJack.Services.Models;
 using System.Net.NetworkInformation;
 using System.Net.WebSockets;
+using System.Text;
 
 namespace SimpleBlackJack
 {
@@ -39,7 +40,7 @@ namespace SimpleBlackJack
             Console.WriteLine();
         }
 
-        public static void Logo()
+        public static void HowToPlay()
         {
 
             IAppVersionService app = new AppVersionService();
@@ -47,9 +48,49 @@ namespace SimpleBlackJack
             while (input != "enter")
             {
                 Console.Clear();
+                Writeln(ConsoleColor.Red, "        T h r e e  P e p p e r s  G a m i n g   P r e s e n t s ");
+                Writeln(ConsoleColor.Green, "************************* S I M P L E  T E X T *************************");
+                Writeln(ConsoleColor.DarkMagenta, "♥♥♥♥♥♥  ♥♥       ♥♥♥♥♥   ♥♥♥♥♥♥ ♥♥   ♥♥      ♥♥  ♥♥♥♥♥   ♥♥♥♥♥♥ ♥♥   ♥♥");
+                Writeln(ConsoleColor.DarkMagenta, "♥♥   ♥♥ ♥♥      ♥♥   ♥♥ ♥♥      ♥♥  ♥♥       ♥♥ ♥♥   ♥♥ ♥♥      ♥♥  ♥♥");
+                Writeln(ConsoleColor.Magenta, "♥♥♥♥♥♥  ♥♥      ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥        ♥♥ ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥");
+                Writeln(ConsoleColor.Magenta, "♥♥   ♥♥ ♥♥      ♥♥   ♥♥ ♥♥      ♥♥  ♥♥  ♥♥   ♥♥ ♥♥   ♥♥ ♥♥      ♥♥  ♥♥");
+                Writeln(ConsoleColor.Magenta, "♥♥♥♥♥♥  ♥♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥  ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥");
+                Write(ConsoleColor.White, $"  ********** Developed by Steve Sparks, ");
+                Write(ConsoleColor.DarkYellow, $"ver:{app.Version}");
+                Writeln(ConsoleColor.White, $" **********");
                 Writeln(ConsoleColor.White);
-                Writeln(ConsoleColor.White);
-            
+                Writeln(ConsoleColor.Green,  "   Your goal is to beat the dealers hand without going over 21.");
+                Writeln(ConsoleColor.Yellow, "    * You will receive 2 cards. Cards have values from 2 through 11.");
+                Writeln(ConsoleColor.Yellow, "    * Face Values 2 through 10, K,Q,J are 10 and Ace is 11 or 1 depending on your hand.");
+                Writeln(ConsoleColor.Green, "");
+                Writeln(ConsoleColor.Green, "   The Dealers cards will show one card facedown and one card face up. ");
+                Writeln(ConsoleColor.Yellow, "    * [H]IT if you think you need a higher total.");
+                Writeln(ConsoleColor.Yellow, "    * You \"bust\" if you hand is over 21.");
+                Writeln(ConsoleColor.Yellow, "    * [S]TAND when you are done taking cards.");
+                Writeln(ConsoleColor.Green, "");
+                Write(ConsoleColor.Green,    "   Special Betting Options.");
+                Writeln(ConsoleColor.Red,    " Be sure to check the [C]asino and [G]ame commands.");
+                Writeln(ConsoleColor.Yellow, "    * You will have the option to buy [I]NSurance when the dealer has an ACE showing.");
+                Writeln(ConsoleColor.Yellow, "        If the dealer has blackjack you get the insurance and your bet returned.");
+                Writeln(ConsoleColor.Yellow, "        Otherwise you loose the insurance bet and play continues.");
+                Writeln(ConsoleColor.Yellow, "    * On your first move you can [D]ouble your bet rather than hit or stand.");
+                Writeln(ConsoleColor.Yellow, "        You get 1 more card and then the dealers completes the round of play.");
+                Writeln(ConsoleColor.Green, "");
+                Writeln(ConsoleColor.Green, "   Press [Enter] to return to play");
+
+                while (!Console.KeyAvailable) { Thread.Sleep(1); }
+                input = Console.ReadKey().Key.ToString().ToLower();
+            }
+
+        }
+        public static void Logo()
+        {
+
+            IAppVersionService app = new AppVersionService();
+            var input = "";
+            while (input != "enter")
+            {
+                Console.Clear();  
                 Writeln(ConsoleColor.Red,         "        T h r e e  P e p p e r s  G a m i n g   P r e s e n t s ");
                 Writeln(ConsoleColor.Green,       "************************* S I M P L E  T E X T *************************");
                 Writeln(ConsoleColor.DarkMagenta, "♥♥♥♥♥♥  ♥♥       ♥♥♥♥♥   ♥♥♥♥♥♥ ♥♥   ♥♥      ♥♥  ♥♥♥♥♥   ♥♥♥♥♥♥ ♥♥   ♥♥");
@@ -57,25 +98,29 @@ namespace SimpleBlackJack
                 Writeln(    ConsoleColor.Magenta, "♥♥♥♥♥♥  ♥♥      ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥        ♥♥ ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥");
                 Writeln(ConsoleColor.Magenta,     "♥♥   ♥♥ ♥♥      ♥♥   ♥♥ ♥♥      ♥♥  ♥♥  ♥♥   ♥♥ ♥♥   ♥♥ ♥♥      ♥♥  ♥♥");
                 Writeln(ConsoleColor.Magenta,     "♥♥♥♥♥♥  ♥♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥  ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥");
-                Writeln(ConsoleColor.White,       "       **************** Developed by Steve Sparks ****************");
-                Writeln(ConsoleColor.DarkCyan,   $"                                 {app.Version}");
-                Writeln(ConsoleColor.White);
-                Writeln(ConsoleColor.Yellow,      "     The follow keys will allow you to adjust the console experience.");
-                Writeln(ConsoleColor.DarkCyan, "              [M]ono/Color    : Toggle colors between all white and default colors.");
-                Writeln(ConsoleColor.DarkCyan, "              [T]ips          : Dispaly this message.");
-                Writeln(ConsoleColor.DarkCyan, "              [Q]uit          : Quit and close the game.");
-                Writeln(ConsoleColor.DarkCyan, "              [G]ame Help     : Display Game command help messages");
-                Writeln(ConsoleColor.DarkCyan, "              [C]asino        : Display \"House\" rules and BlackJack scoring details.");
-                Writeln(ConsoleColor.White);
-                Writeln(ConsoleColor.Green,    "                          Press [Enter] to Play");
+                Write(ConsoleColor.White, $"  ********** Developed by Steve Sparks, ");
+                Write(ConsoleColor.DarkYellow, $"ver:{app.Version}");
+                Writeln(ConsoleColor.White, $" **********");
+                Writeln(ConsoleColor.Green, "");
+                Writeln(ConsoleColor.Yellow,      "  Keys to adjust the console experience and get help.");
+                Writeln(ConsoleColor.DarkCyan,    "    [G]ame Help    : Details game commands and addtional betting help.");
+                Writeln(ConsoleColor.DarkCyan,    "    [M]ono/Color   : Toggle colors between all white and default colors.");
+                Writeln(ConsoleColor.DarkCyan,    "    [P]laying Help : Toggle colors between all white and default colors.");
+                Writeln(ConsoleColor.DarkCyan,    "    [Q]uit         : Quit and close the game.");
+                Writeln(ConsoleColor.DarkCyan,    "    [T]ips         : Dispaly this message.");
+                Writeln(ConsoleColor.DarkCyan,    "    [C]asino       : Provides \"House\" rules and BlackJack scoring details.");
+                Writeln(ConsoleColor.Green, "");
+                Writeln(ConsoleColor.Yellow, $"                 Find out more about this game on {RepoName}");
+                Writeln(ConsoleColor.Yellow, $"                 {RepoURL}");
+                Writeln(ConsoleColor.Green, "");
+                Writeln(ConsoleColor.Green,       "  Press [Enter] to Play");
 
-           
                 while (!Console.KeyAvailable) { Thread.Sleep(1); }
                 input = Console.ReadKey().Key.ToString().ToLower();
             }
 
 
-            Console.Clear();
+                Console.Clear();
 
         }
 
@@ -155,12 +200,12 @@ namespace SimpleBlackJack
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Writeln(ConsoleColor.White, $"                         B L A C K J A C K  ");
-            Writeln(ConsoleColor.DarkGreen, "***********************************************************************");
-            Write(ConsoleColor.Green, $"          House Wins : {game.ComputerWins}");
-            Writeln(ConsoleColor.Green, $"            Player Points : {game.PlayerPoints}");
-            Write(ConsoleColor.Green, $"         Player Wins : {game.ComputerWins}");
-            Writeln(ConsoleColor.Green, $"               Player Bet : {game.PlayerCardsBet}");
-            Writeln(ConsoleColor.DarkGreen, "***********************************************************************");
+            Writeln(ConsoleColor.DarkCyan, "***********************************************************************");
+            Write(ConsoleColor.Green,   $"          House Wins : "); Write(ConsoleColor.Yellow,$"{game.ComputerWins}");
+            Write(ConsoleColor.Green, $"            Player Points : "); Writeln(ConsoleColor.Yellow, $"{game.PlayerPoints}");
+            Write(ConsoleColor.Green,   $"         Player Wins : "); Write(ConsoleColor.Yellow, $"{game.ComputerWins}");
+            Write(ConsoleColor.Green,   $"               Player Bet : "); Writeln(ConsoleColor.Yellow, $"{game.PlayerCardsBet}");
+            Writeln(ConsoleColor.DarkCyan, "***********************************************************************");
 
         }
 
@@ -186,10 +231,10 @@ namespace SimpleBlackJack
             
             Writeln(ConsoleColor.White, "");
             Writeln(ConsoleColor.Cyan, "Press [bracketed] letter for choice.");
-            Write(ConsoleColor.White,  "  Console : ");
-            Writeln(ConsoleColor.DarkCyan,"[M]ONO, [T]IPS, and [Q]UIT.");
-            Write(ConsoleColor.White,  "  Game    : ");
-            Writeln(ConsoleColor.DarkGreen, game.CommandStringWithBrackets);
+            Write(ConsoleColor.Green,  "  Console : ");
+            Writeln(ConsoleColor.DarkCyan,"[M]ONO, [T]IPS, [P]LAY HELP and [Q]UIT.");
+            Write(ConsoleColor.Green,  "  Game    : ");
+            Writeln(ConsoleColor.DarkYellow, game.CommandStringWithBrackets);
 
 
         }
@@ -231,6 +276,10 @@ namespace SimpleBlackJack
                     case "t":
                         move.Move = "";
                         Logo();
+                        break;
+                    case "p":
+                        move.Move = "";
+                        HowToPlay();
                         break;
                     case "q":
                         move.Move = "";
@@ -290,7 +339,7 @@ namespace SimpleBlackJack
                         move.Move = "HIT";
                         break;
                     case "i":
-                        move.Move = "INSURANCE";
+                        move.Move = "INS";
                         break;
                     case "d":
                         move.Move = "DOUBLE";

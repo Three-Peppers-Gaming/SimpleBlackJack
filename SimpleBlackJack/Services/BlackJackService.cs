@@ -83,18 +83,18 @@ namespace SimpleBlackJack.Services
             List<string> message = new()
             {
                 "House Rules:",
-                "BlackJack pays 3 x points. (Bet 100 win 300)",
+                "BlackJack pays 3 x points. (Bet 100 win 300).",
                 "BlackJack is an ACE and a FACE Card. A 10 is not a face card.",
                 "Deck is 52 cards w/o Jokers.",
-                "The deck will shuffle when the last card is used.",
+                "The single deck will shuffle when the last card is used.",
                 "House draws on 16 or less and stands on 17.",
-                "Insurance requires enough points for equal bets. Insurance costs 100%",
-                "Insurance is betting aginst the dealer having Blackback. (see below)",
-                "Double requires enough points remaining to double.",
+                "Insurance requires enough points for equal bets. Insurance costs 100%.",
+                "Insurance is betting aginst the dealer having Blackback. ",
+                "Double requires enough points remaining to double your bet.",
                 //"Splits and Insurance require enough points for equal bets",
                 //"Splits are allowed when player gets on any card of same value.",
-                "The player receives 10000 points. Each new play session.",
-                "Minimum Best is 100 points.",
+                "The player receives 10000 points at the beginning on the game.",
+                "Minimum default Bet is 100 points. Other bets are in multiples of 1000.",
                 "Beat the house when the player exceeds 50000 points.",
                 "When a player has 0 points, the house wins."
             };
@@ -108,13 +108,13 @@ namespace SimpleBlackJack.Services
             {
                 "Valid Commands:",
                 "Some commands are only valid at certian times during the game.",
-                "BET #    : Bets 100 or 1000 x the the number specified [1] (1000) to [0] (10000)].",
-                "DOUBLE   : Doubles your bet and then STANDS your hand",
+                "BET #    : Bets 100 or 1000 x the the number specified [1] = 1000 to [0] = 10000.",
+                "DOUBLE   : Doubles your bet and then STANDS your hand.",
                 "GAME     : Dispalys this list of commands.",
                 "HIT      : Deal a card for hand in play.",
                 "INS      : Purchases insurance and stand on current hand.",
                 "CASINO   : Provides a list of the betting and playting rules.",
-                "NEW    : Restarts the game and resets player and points.",
+                "NEW      : Restarts the game and resets player and points.",
                 "STAND    : Player lets computer finish the game on main hand."
             };
 
@@ -125,8 +125,8 @@ namespace SimpleBlackJack.Services
         {
             List<string> message = new()
             {
-                "Game Option:",
-                "Some commands are only valid at certian times during the game.",
+                "Game Keyboard Commands:",
+                "Some keys are only valid at certian times during the game.",
                 "[B]ET[#]   : Default bet of 100 or 1000x NumKey [1] 1000 to [0] 10000.",
                 "[C]ASINO   : \"House\" Rules for betting and card evaluation rules.",
                 "[D]OUBLE   : Doubles your bet and then STANDS your hand",
