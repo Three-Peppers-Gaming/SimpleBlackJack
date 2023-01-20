@@ -8,6 +8,16 @@
     <StartupObject>SimpleBlackJack.Program</StartupObject>
     <ApplicationIcon>BlackJackLogo.ico</ApplicationIcon>
     <PlatformTarget>x86</PlatformTarget>
+    <Version>1.0.1.0</Version>
+    <AssemblyName>SimpleBlackJack</AssemblyName>
+    <Platforms>AnyCPU;x86</Platforms>
+    <RepositoryUrl>https://github.com/three-peppers-gaming</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>game;text;retro;blackjack;free</PackageTags>
+    <PackageReleaseNotes>
+      Initial version of the game based off the BlackJack Server code.
+      Created a stand-alone .net 6 version
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
