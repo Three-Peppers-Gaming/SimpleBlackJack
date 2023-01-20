@@ -2,8 +2,7 @@
 {
     public class BlackJackGame
     {
-        internal object PlayerCardTotal;
-
+       
         public string Id { get; set; } = string.Empty;
         public List<Card> Deck { get; set; } = new();
         public int ComputerWins { get; set; } = 0;

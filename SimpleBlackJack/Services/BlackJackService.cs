@@ -86,14 +86,14 @@ namespace SimpleBlackJack.Services
                 "BlackJack pays 3 x points. (Bet 100 win 300).",
                 "BlackJack is an ACE and a FACE Card. A 10 is not a face card.",
                 "Deck is 52 cards w/o Jokers.",
-                "The single deck will shuffle when the last card is used.",
+                "The single deck will shuffle when the last card of the deck is used.",
                 "House draws on 16 or less and stands on 17.",
                 "Insurance requires enough points for equal bets. Insurance costs 100%.",
-                "Insurance is betting aginst the dealer having Blackback. ",
+                "Insurance is betting against the dealer having Blackback. ",
                 "Double requires enough points remaining to double your bet.",
                 //"Splits and Insurance require enough points for equal bets",
-                //"Splits are allowed when player gets on any card of same value.",
-                "The player receives 10000 points at the beginning on the game.",
+                //"Splits are allowed when a player gets on any card of the same value.",
+                "The player receives 10000 points at the beginning of the game.",
                 "Minimum default Bet is 100 points. Other bets are in multiples of 1000.",
                 "Beat the house when the player exceeds 50000 points.",
                 "When a player has 0 points, the house wins."
@@ -107,15 +107,15 @@ namespace SimpleBlackJack.Services
             List<string> message = new()
             {
                 "Valid Commands:",
-                "Some commands are only valid at certian times during the game.",
+                "Some commands are only valid at certain times during the game.",
                 "BET #    : Bets 100 or 1000 x the the number specified [1] = 1000 to [0] = 10000.",
                 "DOUBLE   : Doubles your bet and then STANDS your hand.",
                 "GAME     : Dispalys this list of commands.",
                 "HIT      : Deal a card for hand in play.",
-                "INS      : Purchases insurance and stand on current hand.",
+                "INS      : Purchases insurance and stand on the current hand.",
                 "CASINO   : Provides a list of the betting and playting rules.",
                 "NEW      : Restarts the game and resets player and points.",
-                "STAND    : Player lets computer finish the game on main hand."
+                "STAND    : Player lets computer finish the game on the main hand."
             };
 
             return message;
@@ -126,15 +126,15 @@ namespace SimpleBlackJack.Services
             List<string> message = new()
             {
                 "Game Keyboard Commands:",
-                "Some keys are only valid at certian times during the game.",
+                "Some keys are only valid at certain times during the game.",
                 "[B]ET[#]   : Default bet of 100 or 1000x NumKey [1] 1000 to [0] 10000.",
                 "[C]ASINO   : \"House\" Rules for betting and card evaluation rules.",
                 "[D]OUBLE   : Doubles your bet and then STANDS your hand",
-                "[G]AME     : Dispalys this list of commands.",
+                "[G]AME     : Displays this list of commands.",
                 "[H]IT      : Deal a card for hand in play.",
-                "[I]NS      : Purchases insurance and stand on current hand.",
+                "[I]NS      : Purchases insurance and stand on the current hand.",
                 "[N]EW      : Restarts the game and resets player and points.",
-                "[S]TAND    : Player lets computer finish the game on main hand.",
+                "[S]TAND    : Player lets computer finish the game on the main hand.",
             };
 
             return message;
@@ -332,7 +332,7 @@ namespace SimpleBlackJack.Services
 
             if (game.PlayerCards.Count > 2)
             {
-                game.Messages.Add("You can not double once you have taken any cards.");
+                game.Messages.Add("You cannot double once you have taken any cards.");
                 return game;
             }
 
@@ -411,7 +411,7 @@ namespace SimpleBlackJack.Services
         {
             game.PlayerHasInsurange = false;
 
-            if (CardTotal(game.ComputerCards) <= 16) game.Messages.Add($"House has {CardTotal(game.ComputerCards)} must hit till over 16.");
+            if (CardTotal(game.ComputerCards) <= 16) game.Messages.Add($"House has {CardTotal(game.ComputerCards)}. House must hit till over 16.");
 
             while (CardTotal(game.ComputerCards) <= 16)
             {
@@ -691,9 +691,8 @@ namespace SimpleBlackJack.Services
             {
                 game.GameActive = false;
                 commandList.Add("NEW");
-                game.Messages.Add("WINNER WINNER!");
-                if (game.PlayerPoints == 50000) game.Messages.Add("Player has reached the 50000 maximum points the house can award!");
-                if (game.PlayerPoints > 50000) game.Messages.Add("Player bankrupt the House and exceeded the 50000 point maximum!");
+                game.Messages.Add("YOU ARE A BIG WINNER! - The House is bankrupt! ");
+                if (game.PlayerPoints > 50000) game.Messages.Add("WOW! You have exceeded 50000 points the House can award!");
                 game.Messages.Add("Please start a NEW the game.");
             }
 
@@ -888,6 +887,7 @@ namespace SimpleBlackJack.Services
             while (Deck.Count > 0)
             {
                 var R = new Random();
+               
                 var CardSelection = R.Next(Deck.Count);
                 Card Selection = Deck[CardSelection];
                 ShuffeledDeck.Add(Selection);

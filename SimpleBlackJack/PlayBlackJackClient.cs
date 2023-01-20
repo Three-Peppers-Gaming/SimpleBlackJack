@@ -18,7 +18,6 @@ namespace SimpleBlackJack
         const string UNDERLINE = "\x1B[4m";
         const string RESET = "\x1B[0m";
         private static Boolean Monotone = false;
-        private static Boolean Scroll = false;
         private static ConsoleColor Monocolor = ConsoleColor.White;
 
         private static void SetColor(ConsoleColor consoleWordColor)
@@ -55,7 +54,7 @@ namespace SimpleBlackJack
                 Writeln(ConsoleColor.Magenta, "♥♥♥♥♥♥  ♥♥      ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥        ♥♥ ♥♥♥♥♥♥♥ ♥♥      ♥♥♥♥♥");
                 Writeln(ConsoleColor.Magenta, "♥♥   ♥♥ ♥♥      ♥♥   ♥♥ ♥♥      ♥♥  ♥♥  ♥♥   ♥♥ ♥♥   ♥♥ ♥♥      ♥♥  ♥♥");
                 Writeln(ConsoleColor.Magenta, "♥♥♥♥♥♥  ♥♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥  ♥♥♥♥♥  ♥♥   ♥♥  ♥♥♥♥♥♥ ♥♥   ♥♥");
-                Write(ConsoleColor.White, $"  ********** Developed by Steve Sparks, ");
+                Write(ConsoleColor.White, $"  ********** Developed by {SteveSparks}, ");
                 Write(ConsoleColor.DarkYellow, $"ver:{app.Version}");
                 Writeln(ConsoleColor.White, $" **********");
                 Writeln(ConsoleColor.White);
@@ -72,11 +71,11 @@ namespace SimpleBlackJack
                 Writeln(ConsoleColor.Red,    " Be sure to check the [C]asino and [G]ame commands.");
                 Writeln(ConsoleColor.Yellow, "    * You will have the option to buy [I]NSurance when the dealer has an ACE showing.");
                 Writeln(ConsoleColor.Yellow, "        If the dealer has blackjack you get the insurance and your bet returned.");
-                Writeln(ConsoleColor.Yellow, "        Otherwise you loose the insurance bet and play continues.");
+                Writeln(ConsoleColor.Yellow, "        Otherwise you lose the insurance bet and play continues.");
                 Writeln(ConsoleColor.Yellow, "    * On your first move you can [D]ouble your bet rather than hit or stand.");
                 Writeln(ConsoleColor.Yellow, "        You get 1 more card and then the dealers completes the round of play.");
                 Writeln(ConsoleColor.Green, "");
-                Writeln(ConsoleColor.Green, "   Press [Enter] to return to play");
+                Writeln(ConsoleColor.Green, "   Press [Enter] to return to play.");
 
                 while (!Console.KeyAvailable) { Thread.Sleep(1); }
                 input = Console.ReadKey().Key.ToString().ToLower();
@@ -103,7 +102,7 @@ namespace SimpleBlackJack
                 Writeln(ConsoleColor.White, $" **********");
                 Writeln(ConsoleColor.Green, "");
                 Writeln(ConsoleColor.Yellow,      "  Keys to adjust the console experience and get help.");
-                Writeln(ConsoleColor.DarkCyan,    "    [G]ame Help    : Details game commands and addtional betting help.");
+                Writeln(ConsoleColor.DarkCyan,    "    [G]ame Help    : Details game commands and additional betting help.");
                 Writeln(ConsoleColor.DarkCyan,    "    [M]ono/Color   : Toggle colors between all white and default colors.");
                 Writeln(ConsoleColor.DarkCyan,    "    [P]laying Help : Toggle colors between all white and default colors.");
                 Writeln(ConsoleColor.DarkCyan,    "    [Q]uit         : Quit and close the game.");
@@ -114,20 +113,10 @@ namespace SimpleBlackJack
                 Writeln(ConsoleColor.Yellow, $"                 {RepoURL}");
                 Writeln(ConsoleColor.Green, "");
                 Writeln(ConsoleColor.Green,       "  Press [Enter] to Play");
-
                 while (!Console.KeyAvailable) { Thread.Sleep(1); }
                 input = Console.ReadKey().Key.ToString().ToLower();
             }
-
-
                 Console.Clear();
-
-        }
-
-
-        public static void DisplayIntro()
-        {
-          
         }
 
         private static void DrawCardPart(List<Card> PlayerCards, string part)
@@ -162,18 +151,12 @@ namespace SimpleBlackJack
                 cardpart = cardpart.Replace("Y", cn);
                 if (cn == "1") { cardpart = cardpart.Replace("Z", "1"); cardpart = cardpart.Replace("L", "0"); } else { cardpart = cardpart.Replace("Z", " "); cardpart = cardpart.Replace("L", cn); }
                 if (cn == "1") { cardpart = cardpart.Replace("X", "0"); } else { cardpart = cardpart.Replace("X", " "); }
-               
-
-
+   
                 Write(c, $"  {cardpart}");
            
             }
             Console.WriteLine();
         }
-
-
-     
-
 
         private static void DrawHand(List<Card> PlayerCards)
         {
@@ -202,8 +185,8 @@ namespace SimpleBlackJack
             Writeln(ConsoleColor.White, $"                         B L A C K J A C K  ");
             Writeln(ConsoleColor.DarkCyan, "***********************************************************************");
             Write(ConsoleColor.Green,   $"          House Wins : "); Write(ConsoleColor.Yellow,$"{game.ComputerWins}");
-            Write(ConsoleColor.Green, $"            Player Points : "); Writeln(ConsoleColor.Yellow, $"{game.PlayerPoints}");
-            Write(ConsoleColor.Green,   $"         Player Wins : "); Write(ConsoleColor.Yellow, $"{game.ComputerWins}");
+            Write(ConsoleColor.Green,   $"            Player Points : "); Writeln(ConsoleColor.Yellow, $"{game.PlayerPoints}");
+            Write(ConsoleColor.Green,   $"         Player Wins : "); Write(ConsoleColor.Yellow, $"{game.PlayerWins}");
             Write(ConsoleColor.Green,   $"               Player Bet : "); Writeln(ConsoleColor.Yellow, $"{game.PlayerCardsBet}");
             Writeln(ConsoleColor.DarkCyan, "***********************************************************************");
 
@@ -235,7 +218,6 @@ namespace SimpleBlackJack
             Writeln(ConsoleColor.DarkCyan,"[M]ONO, [T]IPS, [P]LAY HELP and [Q]UIT.");
             Write(ConsoleColor.Green,  "  Game    : ");
             Writeln(ConsoleColor.DarkYellow, game.CommandStringWithBrackets);
-
 
         }
 
@@ -413,7 +395,6 @@ namespace SimpleBlackJack
                         move.Move = "";
                         break;
 
-
                 }
 
                 if (game.CommandList.Contains(move.Move))
@@ -424,10 +405,7 @@ namespace SimpleBlackJack
 
             }
 
-
         }
-    
-    
     
     }
 
