@@ -853,7 +853,7 @@ namespace SimpleBlackJack.Services
                 new Card { Id=23, Name = "5 of Hearts", Value = 5},
                 new Card { Id=24, Name = "4 of Hearts", Value = 4},
                 new Card { Id=25, Name = "3 of Hearts", Value = 3},
-                new Card { Id=26, Name = "2 of Hearts", Value = 4},
+                new Card { Id=26, Name = "2 of Hearts", Value = 2},
                 new Card { Id=27, Name = "Ace of Spades", Value = 11 },
                 new Card { Id=28, Name = "King of Spades", Value = 10},
                 new Card { Id=29, Name = "Queen of Spades", Value = 10},
