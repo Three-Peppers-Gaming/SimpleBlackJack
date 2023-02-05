@@ -377,7 +377,7 @@ namespace SimpleBlackJack
                             }
                             Writeln(ConsoleColor.White, "");
                             Writeln(ConsoleColor.White, "        Possible Keyboard bets are ");
-                            Writeln(ConsoleColor.Yellow, "           [B] = 100, [1] = 1000 through 0 = 10000");
+                            Writeln(ConsoleColor.Yellow, "        [B] = 100, [1] = 1000, [2] = 2000 through [0] = 10000");
                             Writeln(ConsoleColor.White, "");
                             Writeln(ConsoleColor.Green, "Press [Enter] to return to the game");
                             game.Message = new();

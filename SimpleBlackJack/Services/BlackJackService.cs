@@ -515,7 +515,7 @@ namespace SimpleBlackJack.Services
         private BlackJackGame PushGame(BlackJackGame game)
         {
 
-            game.Messages.Add($"Game is a PUSH, House Hand Total of {CardTotal(game.ComputerCards)} to equal to Player Total of {CardTotal(game.PlayerCards)}.");
+            game.Messages.Add($"Game is a PUSH, House Hand Total of {CardTotal(game.ComputerCards)} is equal to Player Total of {CardTotal(game.PlayerCards)}.");
             game.Messages.Add($"House returns players bet of {game.PlayerCardsBet}.");
             game.PlayerPoints = game.PlayerPoints + game.PlayerCardsBet;
             
