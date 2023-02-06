@@ -15,8 +15,6 @@ namespace SimpleBlackJack
         readonly static string SteveSparks = "Steve Sparks";
         readonly static string RepoName = "GitHub";
         readonly static string RepoURL = "https://github.com/Three-Peppers-Gaming";
-        const string UNDERLINE = "\x1B[4m";
-        const string RESET = "\x1B[0m";
         private static Boolean Monotone = false;
         private static ConsoleColor Monocolor = ConsoleColor.White;
 

@@ -8,7 +8,7 @@
     <StartupObject>SimpleBlackJack.Program</StartupObject>
     <ApplicationIcon>BlackJackLogo.ico</ApplicationIcon>
     <PlatformTarget>x86</PlatformTarget>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.2.0</Version>
     <AssemblyName>SimpleBlackJack</AssemblyName>
     <Platforms>AnyCPU;x86</Platforms>
     <RepositoryUrl>https://github.com/three-peppers-gaming</RepositoryUrl>
